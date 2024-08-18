@@ -32,7 +32,7 @@ spec:
         app: udaconnect-persons-api
     spec:
       containers:
-      - image: hakey94/udaconnect-persons-api:latest
+      - image: hald94/udaconnect-persons-api:latest
         name: udaconnect-persons-api
         imagePullPolicy: Always
         env:

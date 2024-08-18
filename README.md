@@ -103,7 +103,7 @@ Afterwards, you can test that `kubectl` works by running a command like `kubectl
 6. `kubectl apply -f deployment/udaconnect-persons-api.yaml` - Set up the service and deployment for the Persons API
 7. `kubectl apply -f deployment/udaconnect-connections-api.yaml` - Set up the service and deployment for the Connections API
 8. `kubectl apply -f deployment/udaconnect-app.yaml` - Set up the service and deployment for the web app
-9. `sh scripts/run_db_command.sh <POD_NAME>` - Seed your database against the `postgres` pod. (`kubectl get pods` will give you the `POD_NAME`)
+9. `sh scripts/run_db_command.sh <POD_NAME>` - Seed your database against the `postgres` pod. (`kubectl get pods` will give you the `POD_NAME`) (postgres-6fcc7bcdc7-h9pxg)
 10. 
 # Install helm on the guest VM
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
@@ -112,7 +112,7 @@ chmod 700 get_helm.sh
 
 ./get_helm.sh
 
-helm install udaconnect-kafka bitnami/kafka  --kubeconfig /etc/rancher/k3s/k3s.yaml 
+helm install udaconnect-kafka bitnami/kafka  --kubeconfig /etc/rancher/k3s/k3s.yaml
 
 # verify the installation
 kubectl get pods
@@ -133,8 +133,8 @@ kubectl exec -it $POD_NAME -- kafka-topics.sh \
     --replication-factor 1 --partitions 1 \
     --topic $TOPIC
 
-11. kubectl apply -f deployment/udaconnect-location-service.yaml - Set up the location service
-12. kubectl apply -f deployment/udaconnect-location-ingester.yaml - Set up the location ingester service
+11. `kubectl apply -f deployment/udaconnect-location-service.yaml` - Set up the location service
+12. `kubectl apply -f deployment/udaconnect-location-ingester.yaml` - Set up the location ingester service
 13. Confirm that all the pods and services are in the running state before proceeding with your test
   kubectl get pods
   kubectl get svc

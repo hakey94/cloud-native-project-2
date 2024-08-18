@@ -32,7 +32,7 @@ spec:
         app: udaconnect-location-ingester
     spec:
       containers:
-      - image: hakey94/udaconnect-location-ingester:latest
+      - image: hald94/udaconnect-location-ingester:latest
         name: udaconnect-location-ingester
         imagePullPolicy: Always
         env:
