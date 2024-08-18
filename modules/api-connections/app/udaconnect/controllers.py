@@ -1,15 +1,20 @@
 from datetime import datetime
 
-from app.udaconnect.schemas import ConnectionSchema
-from app.udaconnect.services import ConnectionService
+from app.udaconnect.models import Connection, Location, Person
+from app.udaconnect.schemas import (
+    ConnectionSchema,
+    LocationSchema,
+    PersonSchema,
+)
+from app.udaconnect.services import ConnectionService, LocationService, PersonService
 from flask import request
-from flask_accepts import responds
+from flask_accepts import accepts, responds
 from flask_restx import Namespace, Resource
-from typing import Optional
+from typing import Optional, List
 
 DATE_FORMAT = "%Y-%m-%d"
 
-api = Namespace("UdaConnect", description="Connections via geolocation.")  # noqa
+api = Namespace("UdaConnect", description="API: get connection.")  # noqa
 
 
 @api.route("/persons/<person_id>/connection")
@@ -23,9 +28,10 @@ class ConnectionDataResource(Resource):
             request.args["start_date"], DATE_FORMAT
         )
         end_date: datetime = datetime.strptime(request.args["end_date"], DATE_FORMAT)
+        # default distance is 5
         distance: Optional[int] = request.args.get("distance", 5)
 
-        results = ConnectionService.find_contacts(
+        results: List[Connection] = ConnectionService.find_contacts(
             person_id=person_id,
             start_date=start_date,
             end_date=end_date,
