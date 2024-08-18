@@ -8,8 +8,6 @@ You work for a company that is building a app that uses location data from mobil
 
 Management loved the POC so now that there is buy-in, we want to enhance this application. You have been tasked to enhance the POC application into a [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product) to handle the large volume of location data that will be ingested.
 
-To do so, ***you will refactor this application into a microservice architecture using message passing techniques that you have learned in this course***. It’s easy to get lost in the countless optimizations and changes that can be made: your priority should be to approach the task as an architect and refactor the application into microservices. File organization, code linting -- these are important but don’t affect the core functionality and can possibly be tagged as TODO’s for now!
-
 ### Technologies
 * [Flask](https://flask.palletsprojects.com/en/1.1.x/) - API webserver
 * [SQLAlchemy](https://www.sqlalchemy.org/) - Database ORM
@@ -70,6 +68,27 @@ users:
   user:
     password: 485084ed2cc05d84494d5893160836c9
     username: admin
+```
+```
+apiVersion: v1
+clusters:
+- cluster:
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTWpJeU5qZ3lOVGt3SGhjTk1qUXdOekk1TVRVMU1EVTVXaGNOTXpRd056STNNVFUxTURVNQpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTWpJeU5qZ3lOVGt3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFTWEgySEpya3ZJWVJmWVA5MmhoT3lGc3pmcUZtaHRxYlp6c2xGamZteGYKR1VrZUtOZHVGTExmR2l5UFhwQmNkZFIxYmhabDJnT1pIMFJBSytobFkzNXdvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVUNEaGFjNCtDNUNVVlNCbXg5c2VOCkhVMGdMcnd3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUloQUozL0lsblNkdEV4UEpDc2l4ZVRZeHg0RmNwbEwra0UKbnVvc0ljbzV4SnhHQWlBVHlieDZWSVQxRjZhMXZOcFBWRmNWdThJN1NrR0VacXhuZ2paOWlTTjVyUT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
+    server: https://127.0.0.1:6443
+  name: default
+contexts:
+- context:
+    cluster: default
+    user: default
+  name: default
+current-context: default
+kind: Config
+preferences: {}
+users:
+- name: default
+  user:
+    client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJrakNDQVRlZ0F3SUJBZ0lJWXh3SnlmMUVMUFl3Q2dZSUtvWkl6ajBFQXdJd0l6RWhNQjhHQTFVRUF3d1kKYXpOekxXTnNhV1Z1ZEMxallVQXhOekl5TWpZNE1qVTVNQjRYRFRJME1EY3lPVEUxTlRBMU9Wb1hEVEkxTURjeQpPVEUxTlRBMU9Wb3dNREVYTUJVR0ExVUVDaE1PYzNsemRHVnRPbTFoYzNSbGNuTXhGVEFUQmdOVkJBTVRESE41CmMzUmxiVHBoWkcxcGJqQlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJHQlVDa2lvK1QrVlBIVEIKcG5uSGpVTVlZeUlZaDc2U3NqS3c1OC8rRzN4eUNZQUdzL0N2eFJCYkhuM3JSSVlXWTBmOXVPK2hyZDhmdVd3ago2Q3p2SWw2alNEQkdNQTRHQTFVZER3RUIvd1FFQXdJRm9EQVRCZ05WSFNVRUREQUtCZ2dyQmdFRkJRY0RBakFmCkJnTlZIU01FR0RBV2dCUVNhLzQ2OGwzUU1GeXFrSTQ5NExYb0w0QW5JREFLQmdncWhrak9QUVFEQWdOSkFEQkcKQWlFQXpyL2RqUHQvUWhkNlFxbnNhV0N3L0t5OHFYb1FSMHhSVFBqVmR2cmljanNDSVFDSmJNaTdtVGhweG00NApJWmNiZjNXUG1tWG9TUlp1YzJtcVQyYWtpM09KMHc9PQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCi0tLS0tQkVHSU4gQ0VSVElGSUNBVEUtLS0tLQpNSUlCZURDQ0FSMmdBd0lCQWdJQkFEQUtCZ2dxaGtqT1BRUURBakFqTVNFd0h3WURWUVFEREJock0zTXRZMnhwClpXNTBMV05oUURFM01qSXlOamd5TlRrd0hoY05NalF3TnpJNU1UVTFNRFU1V2hjTk16UXdOekkzTVRVMU1EVTUKV2pBak1TRXdId1lEVlFRRERCaHJNM010WTJ4cFpXNTBMV05oUURFM01qSXlOamd5TlRrd1dUQVRCZ2NxaGtqTwpQUUlCQmdncWhrak9QUU1CQndOQ0FBUVRLLytFdEFvZ0JJRU92cm5MVTB3ZDVOTWkycHBHOS9Gc2hlNXptMktnCmhncGNXNFVVR3RSR01pTWYxNnQ2UEJZcTBRMEhuU3hlSGtBSVJmczlPVGJBbzBJd1FEQU9CZ05WSFE4QkFmOEUKQkFNQ0FxUXdEd1lEVlIwVEFRSC9CQVV3QXdFQi96QWRCZ05WSFE0RUZnUVVFbXYrT3ZKZDBEQmNxcENPUGVDMQo2QytBSnlBd0NnWUlLb1pJemowRUF3SURTUUF3UmdJaEFKaGt1bVRXOFE2Y1pBeGxlSExZcXB2dGdmV2tnVTBsCkxqWFBoVmIrenl4dUFpRUE2L3lENmlGNXZqR3c3NGVIamFmSWdYVnB2SmcvckxUN1RETGRiQUFsM21jPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+    client-key-data: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSUx6WlRycHZuSTU5QWhRZVVKZ1gxc0dvTXM0anZJbjZBcEdlWGFrY2F6ZFpvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFWUZRS1NLajVQNVU4ZE1HbWVjZU5ReGhqSWhpSHZwS3lNckRuei80YmZISUpnQWF6OEsvRgpFRnNlZmV0RWhoWmpSLzI0NzZHdDN4KzViQ1BvTE84aVhnPT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=
 ```
 Type `exit` to exit the virtual OS and you will find yourself back in your computer's session. Create the file (or replace if it already exists) `~/.kube/config` and paste the contents of the `k3s.yaml` output here.
 
