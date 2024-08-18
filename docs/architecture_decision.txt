@@ -1,10 +1,15 @@
 1. Web client:
 - I was chosen REST API because it is the most common for message passing and it gives a relatively high throughput in API performance.
+- REST currently has significantly more adoption than gRPC, and REST can be designed to be very performant.
+
 2. Mobile devices:
 - I was chosen gRPC to collect the large volumn of location from mobile devices.
 And gRPC is particularly well-suited for microservices architectures, real-time applications.
 The performance of gRPC is really good. This can result in lower latency and higher thoughput for 
 communication between services.
+- Further mmore, Mobile devices can integrate well with gRPC without an intermediary proxy to the backend service.
+
 3. Message Queues (Kafka)
 - I was chosen Kafka to handle the ingested location data because it is a durable distributed Queue
 that can handle large volumes of data. While the application need to collect a large location data from mobile devices
+-A distributed queue like Kafka may be needed for large volumes of data
