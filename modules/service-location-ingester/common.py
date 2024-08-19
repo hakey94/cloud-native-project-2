@@ -9,7 +9,7 @@ from typing import Dict
 TOPIC_NAME = os.environ["TOPIC_NAME"]
 KAFKA_SERVER = os.environ["KAFKA_SERVER"]
 
-# Configure logging
+# Configure logging information
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("location-ingester-service")
 
