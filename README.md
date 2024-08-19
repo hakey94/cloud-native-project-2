@@ -112,7 +112,6 @@ helm repo list
 
 helm install kafka-release bitnami/kafka
 
-
 # verify the installation
 kubectl get pods
 
