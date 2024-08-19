@@ -93,8 +93,9 @@ users:
 Type `exit` to exit the virtual OS and you will find yourself back in your computer's session. Create the file (or replace if it already exists) `~/.kube/config` and paste the contents of the `k3s.yaml` output here.
 
 Afterwards, you can test that `kubectl` works by running a command like `kubectl describe services`. It should not return any errors.
+### Install docker images locally then push into docker hub
 
-### Steps
+### Steps apply yaml
 1. `kubectl apply -f deployment/db-configmap.yaml` - Set up environment variables for the pods
 2. `kubectl apply -f deployment/kafka-configmap.yaml` - Set up queue environment variables for the pods
 3. `kubectl apply -f deployment/db-secret.yaml` - Set up secrets for the pods
